@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xux.zoo.elephant.repo.mapper.FileMagnetMapper">
+  <resultMap id="BaseResultMap" type="com.xux.zoo.elephant.repo.model.FileMagnet">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="MAGNET_NAME" jdbcType="VARCHAR" property="magnetName" />
+    <result column="MAGNET_URL" jdbcType="VARCHAR" property="magnetUrl" />
+    <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="MODIFY_TIME" jdbcType="TIMESTAMP" property="modifyTime" />
+    <result column="PRE_VIEW_PIC" jdbcType="LONGVARBINARY" property="preViewPic" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from file_magnet
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.xux.zoo.elephant.repo.model.FileMagnet">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into file_magnet (MAGNET_NAME, MAGNET_URL, CREATE_TIME, 
+      MODIFY_TIME, PRE_VIEW_PIC)
+    values (#{magnetName,jdbcType=VARCHAR}, #{magnetUrl,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{modifyTime,jdbcType=TIMESTAMP}, #{preViewPic,jdbcType=LONGVARBINARY})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.xux.zoo.elephant.repo.model.FileMagnet">
+    update file_magnet
+    set MAGNET_NAME = #{magnetName,jdbcType=VARCHAR},
+      MAGNET_URL = #{magnetUrl,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+      PRE_VIEW_PIC = #{preViewPic,jdbcType=LONGVARBINARY}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select ID, MAGNET_NAME, MAGNET_URL, CREATE_TIME, MODIFY_TIME, PRE_VIEW_PIC
+    from file_magnet
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select ID, MAGNET_NAME, MAGNET_URL, CREATE_TIME, MODIFY_TIME, PRE_VIEW_PIC
+    from file_magnet
+  </select>
+</mapper>

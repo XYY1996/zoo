@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/elephant.iml" filepath="$PROJECT_DIR$/elephant.iml" />
+      <module fileurl="file://$PROJECT_DIR$/elephant-common/elephant-common.iml" filepath="$PROJECT_DIR$/elephant-common/elephant-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/elephant-demo/elephant-demo.iml" filepath="$PROJECT_DIR$/elephant-demo/elephant-demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/elephant-repo/elephant-repo.iml" filepath="$PROJECT_DIR$/elephant-repo/elephant-repo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/elephant-service/elephant-service.iml" filepath="$PROJECT_DIR$/elephant-service/elephant-service.iml" />
+    </modules>
+  </component>
+</project>

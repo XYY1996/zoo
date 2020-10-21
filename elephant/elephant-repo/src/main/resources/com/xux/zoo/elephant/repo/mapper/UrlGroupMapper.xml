@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xux.zoo.elephant.repo.mapper.UrlGroupMapper">
+  <resultMap id="BaseResultMap" type="com.xux.zoo.elephant.repo.model.UrlGroup">
+    <id column="GROUP_ID" jdbcType="INTEGER" property="groupId" />
+    <result column="GROUP_NAME" jdbcType="VARCHAR" property="groupName" />
+    <result column="DESC" jdbcType="VARCHAR" property="desc" />
+    <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="PARENT_GROUP_ID" jdbcType="INTEGER" property="parentGroupId" />
+    <result column="LEAF_FLAG" jdbcType="BIT" property="leafFlag" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from url_group
+    where GROUP_ID = #{groupId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.xux.zoo.elephant.repo.model.UrlGroup">
+    insert into url_group (GROUP_ID, GROUP_NAME, DESC, 
+      CREATE_TIME, UPDATE_TIME, PARENT_GROUP_ID, 
+      LEAF_FLAG)
+    values (#{groupId,jdbcType=INTEGER}, #{groupName,jdbcType=VARCHAR}, #{desc,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{parentGroupId,jdbcType=INTEGER}, 
+      #{leafFlag,jdbcType=BIT})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.xux.zoo.elephant.repo.model.UrlGroup">
+    update url_group
+    set GROUP_NAME = #{groupName,jdbcType=VARCHAR},
+      DESC = #{desc,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      PARENT_GROUP_ID = #{parentGroupId,jdbcType=INTEGER},
+      LEAF_FLAG = #{leafFlag,jdbcType=BIT}
+    where GROUP_ID = #{groupId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select GROUP_ID, GROUP_NAME, DESC, CREATE_TIME, UPDATE_TIME, PARENT_GROUP_ID, LEAF_FLAG
+    from url_group
+    where GROUP_ID = #{groupId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select GROUP_ID, GROUP_NAME, DESC, CREATE_TIME, UPDATE_TIME, PARENT_GROUP_ID, LEAF_FLAG
+    from url_group
+  </select>
+</mapper>

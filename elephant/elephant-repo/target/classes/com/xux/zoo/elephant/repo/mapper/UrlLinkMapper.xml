@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xux.zoo.elephant.repo.mapper.UrlLinkMapper">
+  <resultMap id="BaseResultMap" type="com.xux.zoo.elephant.repo.model.UrlLink">
+    <id column="LINK_ID" jdbcType="INTEGER" property="linkId" />
+    <result column="URL" jdbcType="VARCHAR" property="url" />
+    <result column="LINK_NAME" jdbcType="VARCHAR" property="linkName" />
+    <result column="DESC" jdbcType="VARCHAR" property="desc" />
+    <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="LINK_ICON" jdbcType="VARCHAR" property="linkIcon" />
+    <result column="LINK_SHORT_CUT" jdbcType="VARCHAR" property="linkShortCut" />
+    <result column="LINK_TYPE" jdbcType="VARCHAR" property="linkType" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from url_link
+    where LINK_ID = #{linkId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.xux.zoo.elephant.repo.model.UrlLink">
+    insert into url_link (LINK_ID, URL, LINK_NAME, 
+      DESC, CREATE_TIME, UPDATE_TIME, 
+      LINK_ICON, LINK_SHORT_CUT, LINK_TYPE
+      )
+    values (#{linkId,jdbcType=INTEGER}, #{url,jdbcType=VARCHAR}, #{linkName,jdbcType=VARCHAR}, 
+      #{desc,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{linkIcon,jdbcType=VARCHAR}, #{linkShortCut,jdbcType=VARCHAR}, #{linkType,jdbcType=VARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.xux.zoo.elephant.repo.model.UrlLink">
+    update url_link
+    set URL = #{url,jdbcType=VARCHAR},
+      LINK_NAME = #{linkName,jdbcType=VARCHAR},
+      DESC = #{desc,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      LINK_ICON = #{linkIcon,jdbcType=VARCHAR},
+      LINK_SHORT_CUT = #{linkShortCut,jdbcType=VARCHAR},
+      LINK_TYPE = #{linkType,jdbcType=VARCHAR}
+    where LINK_ID = #{linkId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select LINK_ID, URL, LINK_NAME, DESC, CREATE_TIME, UPDATE_TIME, LINK_ICON, LINK_SHORT_CUT, 
+    LINK_TYPE
+    from url_link
+    where LINK_ID = #{linkId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select LINK_ID, URL, LINK_NAME, DESC, CREATE_TIME, UPDATE_TIME, LINK_ICON, LINK_SHORT_CUT, 
+    LINK_TYPE
+    from url_link
+  </select>
+</mapper>
