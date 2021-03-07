@@ -17,7 +17,6 @@
       <module name="elephant" target="1.8" />
       <module name="elephant-common" target="1.8" />
       <module name="elephant-demo" target="1.8" />
-      <module name="elephant-mbg" target="1.8" />
       <module name="elephant-repo" target="1.8" />
       <module name="elephant-service" target="1.8" />
     </bytecodeTargetLevel>
@@ -27,7 +26,6 @@
       <module name="elephant" options="-parameters" />
       <module name="elephant-common" options="-parameters" />
       <module name="elephant-demo" options="-parameters" />
-      <module name="elephant-mbg" options="-parameters" />
       <module name="elephant-repo" options="-parameters" />
       <module name="elephant-service" options="-parameters" />
     </option>
